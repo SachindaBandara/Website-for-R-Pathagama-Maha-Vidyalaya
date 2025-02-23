@@ -2,95 +2,99 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { IoMdClose } from "react-icons/io";
 import School_logo from "../assets/SchoolLogos/School_white_logo.png";
+import { useDispatch, useSelector } from "react-redux";
+import { changeLanguage } from "../utils/configSlice";
+import lang from "../utils/languageConstants";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const dispatch = useDispatch();
+  const langKey = useSelector((store) => store.config.lang);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const handleLanguageChange = (e) => {
+    dispatch(changeLanguage(e.target.value));
+  };
+
+  // Destructure language constants with a fallback to English
+  const { header, home, about, academics, lms, notice, gallery, contact } = lang[langKey] || lang["en"];
+
   return (
-     <>
+    <>
       <header className="bg-red-custom text-white py-4 fixed w-full top-0 left-0 z-50 font-inter">
         <div className="container mx-auto flex justify-between items-center px-4">
           <div className="flex items-center">
             <img src={School_logo} alt="Logo" className="h-10 mr-6" />
             <h1 className="text-lg font-bold hidden sm:block">
-              R/Pathagama Maha Vidyalaya
+              {header}
             </h1>
           </div>
 
           {/* Navigation */}
-          <nav className="flex items-center">
+          <nav className="flex items-center gap-6">
             {/* Desktop Menu */}
-            <ul className="hidden sm:flex space-x-6">
+            <ul className="hidden sm:flex items-center gap-6">
               <li>
-                <Link
-                  to="/"
-                  className="rounded transition hover:text-yellow-custom"
-                >
-                  Home
+                <Link to="/" className="rounded transition hover:text-yellow-custom">
+                  {home}
                 </Link>
               </li>
               <li>
-                <Link
-                  to="/about"
-                  className="rounded transition hover:text-yellow-custom "
-                >
-                  About Us
+                <Link to="/about" className="rounded transition hover:text-yellow-custom">
+                  {about}
                 </Link>
               </li>
               <li>
-                <Link
-                  to="/academic"
-                  className="rounded transition hover:text-yellow-custom "
-                >
-                  Academics
+                <Link to="/academic" className="rounded transition hover:text-yellow-custom">
+                  {academics}
                 </Link>
               </li>
               <li>
-                <Link
-                  to="/lms"
-                  className="rounded transition hover:text-yellow-custom "
-                >
-                  LMS
+                <Link to="/lms" className="rounded transition hover:text-yellow-custom">
+                  {lms}
                 </Link>
               </li>
               <li>
-                <Link
-                  to="/notice"
-                  className="rounded transition hover:text-yellow-custom "
-                >
-                  Notice
+                <Link to="/notice" className="rounded transition hover:text-yellow-custom">
+                  {notice}
                 </Link>
               </li>
               <li>
-                <Link
-                  to="/gallery"
-                  className="rounded transition hover:text-yellow-custom "
-                >
-                  Gallery
+                <Link to="/gallery" className="rounded transition hover:text-yellow-custom">
+                  {gallery}
                 </Link>
               </li>
               <li>
-                <Link
-                  to="/contact"
-                  className="rounded transition hover:text-yellow-custom "
-                >
-                  Contact Us
+                <Link to="/contact" className="rounded transition hover:text-yellow-custom">
+                  {contact}
                 </Link>
+              </li>
+
+              {/* Language Selector */}
+              <li>
+                <select
+                  value={langKey}
+                  onChange={handleLanguageChange}
+                  className="bg-red-custom text-white border border-gray-100 rounded px-2 py-1 focus:outline-none hover:border-yellow-custom"
+                >
+                  <option value="en">English</option>
+                  <option value="sinhala">සිංහල</option>
+                  <option value="tamil">தமிழ்</option>
+                </select>
               </li>
             </ul>
 
             {/* Mobile Menu Button */}
             <div className="sm:hidden relative z-20">
-              <label
-                className="cursor-pointer text-white text-3xl"
+              <button
+                className="cursor-pointer text-white text-3xl focus:outline-none"
                 onClick={toggleMenu}
               >
                 {isMenuOpen ? "" : "☰"}
-              </label>
+              </button>
             </div>
           </nav>
         </div>
@@ -117,70 +121,54 @@ const Header = () => {
           <div className="relative text-white rounded-lg p-6 w-full max-w-sm h-screen flex flex-col justify-center items-center">
             <ul className="flex flex-col items-center space-y-8 text-lg">
               <li>
-                <Link
-                  to="/"
-                  className="hover:text-yellow-custom"
-                  onClick={toggleMenu}
-                >
-                  Home
+                <Link to="/" className="hover:text-yellow-custom" onClick={toggleMenu}>
+                  {home}
                 </Link>
               </li>
               <li>
-                <Link
-                  to="/about"
-                  className="hover:text-yellow-custom"
-                  onClick={toggleMenu}
-                >
-                  About Us
+                <Link to="/about" className="hover:text-yellow-custom" onClick={toggleMenu}>
+                  {about}
                 </Link>
               </li>
               <li>
-                <Link
-                  to="/academics"
-                  className="hover:text-yellow-custom"
-                  onClick={toggleMenu}
-                >
-                  Academics
+                <Link to="/academics" className="hover:text-yellow-custom" onClick={toggleMenu}>
+                  {academics}
                 </Link>
               </li>
               <li>
-                <Link
-                  to="/lms"
-                  className=" hover:text-yellow-custom "
-                >
-                  LMS
+                <Link to="/lms" className="hover:text-yellow-custom" onClick={toggleMenu}>
+                  {lms}
                 </Link>
               </li>
               <li>
-                <Link
-                  to="/notice"
-                  className="hover:text-yellow-custom"
-                  onClick={toggleMenu}
-                >
-                  Notice
+                <Link to="/notice" className="hover:text-yellow-custom" onClick={toggleMenu}>
+                  {notice}
                 </Link>
               </li>
               <li>
-                <Link
-                  to="/gallery"
-                  className="hover:text-yellow-custom"
-                  onClick={toggleMenu}
-                >
-                  Gallery
+                <Link to="/gallery" className="hover:text-yellow-custom" onClick={toggleMenu}>
+                  {gallery}
                 </Link>
+              </li>
+              {/* Language Selector in Mobile Menu */}
+              <li>
+                <select
+                  value={langKey}
+                  onChange={handleLanguageChange}
+                  className="bg-red-custom text-white border border-white rounded px-4 py-2 focus:outline-none hover:border-yellow-custom"
+                >
+                  <option value="en">English</option>
+                  <option value="sinhala">සිංහල</option>
+                  <option value="tamil">தமிழ்</option>
+                </select>
               </li>
             </ul>
             <div className="absolute bottom-8">
-              <Link
-                to="/contact"
-                className="hover:text-yellow-custom text-lg"
-                onClick={toggleMenu}
-              >
-                Contact Us
+              <Link to="/contact" className="hover:text-yellow-custom text-lg" onClick={toggleMenu}>
+                {contact}
               </Link>
             </div>
           </div>
-
         </div>
       </main>
     </>

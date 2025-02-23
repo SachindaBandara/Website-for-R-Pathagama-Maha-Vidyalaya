@@ -37,7 +37,7 @@ const HeroImageCarousel = () => {
                 style={{ backgroundImage: `url(${image})` }}
               ></div>
               {/* Dark Overlay */}
-              <div className="absolute inset-0 bg-black opacity-40"></div>
+              <div className="absolute inset-0 bg-black opacity-50"></div>
             </div>
           </div>
         ))}
