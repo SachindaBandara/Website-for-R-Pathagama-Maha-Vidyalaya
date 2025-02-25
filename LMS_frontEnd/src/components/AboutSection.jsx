@@ -2,6 +2,8 @@ import { useEffect, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import image from "../assets/ImageCarousel/Bg-2.jpg";
 import { MdSchool, MdGroups, MdLibraryBooks } from "react-icons/md";
+import { useSelector } from "react-redux";
+import lang from "../utils/languageConstants";
 
 const AboutSection = () => {
   const ref = useRef(null);
@@ -12,10 +14,20 @@ const AboutSection = () => {
     window.scrollTo(0, 0);
   }, []);
 
+  // Get the selected language
+  const langKey = useSelector((store) => store.config.lang);
+  const {
+    about_title,
+    about_description,
+    about_students,
+    about_teachers,
+    about_classes,
+  } = lang[langKey] || lang["en"];
+
   const stats = [
-    { icon: <MdGroups />, value: "600+", label: "Students" },
-    { icon: <MdSchool />, value: "55+", label: "Teachers" },
-    { icon: <MdLibraryBooks />, value: "12", label: "Classes" }
+    { icon: <MdGroups />, value: "600+", label: about_students },
+    { icon: <MdSchool />, value: "55+", label: about_teachers },
+    { icon: <MdLibraryBooks />, value: "12", label: about_classes },
   ];
 
   return (
@@ -25,9 +37,9 @@ const AboutSection = () => {
         className="absolute inset-0 bg-cover bg-center"
         style={{
           backgroundImage: `url(${image})`,
-          backgroundAttachment: "fixed",  // Keeps background fixed
-          backgroundPosition: "center",   // Ensures proper positioning
-          backgroundSize: "cover",        // Ensures it covers the whole area
+          backgroundAttachment: "fixed",
+          backgroundPosition: "center",
+          backgroundSize: "cover",
         }}
       ></motion.div>
 
@@ -43,7 +55,7 @@ const AboutSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          55 Years of Excellence
+          {about_title}
         </motion.h2>
 
         {/* Divider Line */}
@@ -61,8 +73,7 @@ const AboutSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
         >
-          Welcome to <span className="text-yellow-400">R/Pathagama Maha Vidyalaya</span>, where we provide a nurturing environment for students to learn, grow, and excel. Our dedicated faculty and 
-          state-of-the-art facilities ensure a well-rounded education that prepares students for success in the modern world.
+          {about_description}
         </motion.p>
 
         {/* Stats Grid */}
@@ -72,7 +83,7 @@ const AboutSection = () => {
           whileInView="visible"
           variants={{
             hidden: { opacity: 0 },
-            visible: { opacity: 1, transition: { staggerChildren: 0.2 } }
+            visible: { opacity: 1, transition: { staggerChildren: 0.2 } },
           }}
         >
           {stats.map((stat, index) => (
@@ -81,7 +92,7 @@ const AboutSection = () => {
               className="p-6 bg-white/10 backdrop-blur-lg rounded-xl border border-white/10 hover:bg-white/20 transition-all"
               variants={{
                 hidden: { scale: 0.9, opacity: 0 },
-                visible: { scale: 1, opacity: 1 }
+                visible: { scale: 1, opacity: 1 },
               }}
             >
               <div className="text-yellow-400 text-4xl mb-4">{stat.icon}</div>
