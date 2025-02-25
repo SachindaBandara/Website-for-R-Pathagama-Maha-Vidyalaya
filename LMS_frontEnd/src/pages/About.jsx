@@ -1,117 +1,193 @@
-import React from "react";
-import { motion } from "framer-motion";
-import { useInView } from "react-intersection-observer";
-import { ParallaxProvider, Parallax } from "react-scroll-parallax";
+import React, { useEffect, useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import history from "../assets/History.jpg";
+import missionVisionBg from "../assets/Event3.jpg"; // Add a new image for the first section
+import leadershipBg from "../assets/Event1.jpg"; // Add a new image for the third section
 import Logo from "../assets/SchoolLogos/School_logo.png";
-import sin_text from "../assets/SchoolLogos/sinhala_Text.png";
 import PrincipalCards from "../components/PrincipalCard";
 import { useSelector } from "react-redux";
 import lang from "../utils/languageConstants";
+import { MdSchool, MdGroups, MdLibraryBooks } from "react-icons/md";
 
 const About = () => {
-    const langKey = useSelector((store) => store.config.lang);
-    const translations = lang[langKey] || lang["en"];
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({ target: ref });
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
 
-    const [aboutRef, aboutInView] = useInView({ triggerOnce: true, threshold: 0.2 });
-    const [infoRef, infoInView] = useInView({ triggerOnce: true, threshold: 0.2 });
-    const [historyRef, historyInView] = useInView({ triggerOnce: true, threshold: 0.2 });
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
-    return (
-        <ParallaxProvider>
-            <div className="font-inter my-16">
-                <section className="container mx-auto px-4 py-16">
-                    <div className="mb-14 flex flex-col items-center">
-                        <Parallax y={[-20, 20]}>
-                            <img src={Logo} alt="School Logo" className="w-48 h-48 object-contain mb-4" />
-                        </Parallax>
-                        <Parallax y={[-10, 10]}>
-                            <img src={sin_text} alt="Sinhala Text" className="w-48 object-contain opacity-90" />
-                        </Parallax>
-                    </div>
+  const langKey = useSelector((store) => store.config.lang);
+  const translations = lang[langKey] || lang["en"];
 
-                    <div className="grid md:grid-cols-2 gap-12 mb-24">
-                        <motion.div
-                            ref={infoRef}
-                            className="bg-white rounded-lg shadow-lg p-8 hover:shadow-2xl transition-all duration-300"
-                            initial={{ opacity: 0, y: 50 }}
-                            animate={infoInView ? { opacity: 1, y: 0 } : {}}
-                            transition={{ duration: 0.8 }}
-                        >
-                            <h2 className="text-3xl font-bold mb-6 text-red-custom text-center">
-                                {translations.missionTitle}
-                            </h2>
-                            <p className="text-gray-600 text-lg leading-relaxed text-center">
-                                {translations.missionText}
-                            </p>
-                        </motion.div>
+  const stats = [
+    { icon: <MdGroups />, value: "600+", label: translations.students },
+    { icon: <MdSchool />, value: "55+", label: translations.teachers },
+    { icon: <MdLibraryBooks />, value: "12", label: translations.classes },
+  ];
 
-                        <motion.div
-                            ref={aboutRef}
-                            className="bg-white rounded-lg shadow-lg p-8 hover:shadow-2xl transition-all duration-300"
-                            initial={{ opacity: 0, y: 50 }}
-                            animate={aboutInView ? { opacity: 1, y: 0 } : {}}
-                            transition={{ duration: 0.8, delay: 0.2 }}
-                        >
-                            <h2 className="text-3xl font-bold mb-6 text-red-custom text-center">
-                                {translations.visionTitle}
-                            </h2>
-                            <p className="text-gray-600 text-lg leading-relaxed text-center">
-                                {translations.visionText}
-                            </p>
-                        </motion.div>
-                    </div>
+  return (
+    <div className="relative w-full min-h-screen overflow-hidden font-inter">
+      {/* First Section: Logo, Vision, and Mission */}
+      <section className="relative h-screen flex items-center justify-center overflow-hidden">
+        {/* Parallax Background */}
+        <motion.div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage: `url(${missionVisionBg})`,
+            backgroundAttachment: "fixed",
+            backgroundPosition: "center",
+            backgroundSize: "cover",
+          }}
+        ></motion.div>
 
-                    <motion.div
-                        ref={historyRef}
-                        className="bg-white rounded-lg overflow-hidden"
-                        initial={{ opacity: 0, y: 50 }}
-                        animate={historyInView ? { opacity: 1, y: 0 } : {}}
-                        transition={{ duration: 0.8 }}
-                    >
-                        <div className="grid lg:grid-cols-2 gap-8">
-                            <Parallax y={[-20, 20]}>
-                                <div className="relative h-96">
-                                    <img
-                                        src={history}
-                                        alt="School History"
-                                        className="w-full h-full rounded-lg object-cover transform transition duration-500 hover:scale-105"
-                                    />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-yellow-900/60 via-transparent to-transparent" />
-                                    <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                                        <h3 className="text-4xl font-bold mb-2">{translations.historySubtitle}</h3>
-                                        <p className="text-lg opacity-90">{translations.historyTitle}</p>
-                                    </div>
-                                </div>
-                            </Parallax>
+        {/* Gradient Overlay with Opacity */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-black/50"></div>
 
-                            <div className="p-8">
-                                <h2 className="text-3xl font-bold mb-6 text-red-custom">{translations.historyTitle}</h2>
-                                <p className="text-gray-600 text-lg leading-relaxed">
-                                    {translations.historyText}
-                                </p>
-                                <div className="mt-8 p-4 bg-red-50 rounded-lg border-l-4 border-red-800">
-                                    <p className="text-gray-700 italic">{translations.historyQuote}</p>
-                                </div>
-                            </div>
-                        </div>
-                    </motion.div>
-                </section>
+        {/* Content */}
+        <div className="relative container mx-auto flex flex-col items-center text-center px-6 sm:px-10">
+          {/* School Logo and Title */}
+          <motion.div
+            className="flex flex-col items-center mb-16"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <img src={Logo} alt="School Logo" className="w-48 h-48 object-contain mb-4" />
+            <motion.h1
+              className="text-5xl font-bold mt-8 text-white"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+            >
+              {translations.aboutTitle}
+            </motion.h1>
+          </motion.div>
 
-                <section className="container mx-auto px-4 py-16">
-                    <motion.h2
-                        className="text-4xl font-bold text-center mb-16 text-red-custom"
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8 }}
-                    >
-                        {translations.leadershipTitle}
-                    </motion.h2>
-                    <PrincipalCards />
-                </section>
+          {/* Mission and Vision Section */}
+          <motion.div
+            className="grid md:grid-cols-2 gap-12 w-full"
+            initial="hidden"
+            whileInView="visible"
+            variants={{
+              hidden: { opacity: 0 },
+              visible: { opacity: 1, transition: { staggerChildren: 0.2 } },
+            }}
+          >
+            {/* Mission */}
+            <motion.div
+              className="p-8 bg-white/10 backdrop-blur-lg rounded-xl"
+              variants={{
+                hidden: { x: -50, opacity: 0 },
+                visible: { x: 0, opacity: 1 },
+              }}
+            >
+              <h2 className="text-4xl font-bold text-yellow-400 mb-4 text-center">
+                {translations.missionTitle}
+              </h2>
+              <p className="text-gray-200 text-lg leading-relaxed text-left">
+                {translations.missionText}
+              </p>
+            </motion.div>
+
+            {/* Vision */}
+            <motion.div
+              className="p-8 bg-white/10 backdrop-blur-lg rounded-xl"
+              variants={{
+                hidden: { x: 50, opacity: 0 },
+                visible: { x: 0, opacity: 1 },
+              }}
+            >
+              <h2 className="text-4xl font-bold text-yellow-400 mb-4 text-center">
+                {translations.visionTitle}
+              </h2>
+              <p className="text-gray-200 text-lg leading-relaxed text-left">
+                {translations.visionText}
+              </p>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Second Section: History */}
+      <section className="relative h-screen flex items-center justify-center overflow-hidden">
+        {/* Parallax Background */}
+        <motion.div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage: `url(${history})`,
+            backgroundAttachment: "fixed",
+            backgroundPosition: "center",
+            backgroundSize: "cover",
+          }}
+        ></motion.div>
+
+        {/* Gradient Overlay with Opacity */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-black/50"></div>
+
+        {/* Content */}
+        <div className="relative container mx-auto flex flex-col items-center text-center px-6 sm:px-10">
+          {/* History Title */}
+          <motion.h2
+            className="text-5xl font-bold text-yellow-400 mb-12"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            {translations.historyTitle}
+          </motion.h2>
+
+          {/* History Description */}
+          <motion.div
+            className="w-full max-w-4xl bg-white/10 backdrop-blur-lg rounded-xl p-8"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <p className="text-gray-200 text-lg leading-relaxed text-left">
+              {translations.historyText}
+            </p>
+            <div className="mt-8 p-4 bg-yellow-400/10 rounded-lg border-l-4 border-yellow-400">
+              <p className="text-gray-200 italic text-right">
+                {translations.historyQuote}
+              </p>
             </div>
-        </ParallaxProvider>
-    );
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Third Section: Leadership */}
+      <section className="relative h-screen flex items-center justify-center overflow-hidden">
+        {/* Parallax Background */}
+        <motion.div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage: `url(${leadershipBg})`,
+            backgroundAttachment: "fixed",
+            backgroundPosition: "center",
+            backgroundSize: "cover",
+          }}
+        ></motion.div>
+
+        {/* Gradient Overlay with Opacity */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-black/50"></div>
+
+        {/* Content */}
+        <div className="relative container mx-auto flex flex-col items-center text-center px-6 sm:px-10">
+          <motion.h2
+            className="text-4xl font-bold text-center mb-16 text-yellow-400"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            {translations.leadershipTitle}
+          </motion.h2>
+          <PrincipalCards />
+        </div>
+      </section>
+    </div>
+  );
 };
 
 export default About;
