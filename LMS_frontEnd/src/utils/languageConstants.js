@@ -67,6 +67,17 @@ const lang = {
     historyQuote:
       '"From humble beginnings to academic excellence - shaping futures for over a century"',
     leadershipTitle: "Leadership Through the Years",
+
+    //Academic
+    facultyTitle: "Our Faculty",
+    facultyDescription:
+      "The teaching staff at St. Joseph’s College, Colombo 10, epitomize the institution’s commitment to academic excellence and holistic development...",
+    admissionsTitle: "Admissions",
+    admissionsDescription:
+      "Admittance entails a rigorous procedure reflecting our academic standards...",
+    curriculumTitle: "Curriculum",
+    curriculumDescription:
+      "Our curriculum blends tradition and modernity, fostering intellectual development...",
   },
   sinhala: {
     //Header
@@ -139,6 +150,17 @@ const lang = {
     historyQuote:
       '"කුඩා ආරම්භයකින් විශිෂ්ටත්වයට - සියවසක් පුරා අනාගතයන් සැලසුම් කරයි"',
     leadershipTitle: "වසර තුළ නායකත්වය",
+
+    //Academic
+    facultyTitle: "අපගේ පීඨය",
+    facultyDescription:
+      "කොළඹ 10 ශාන්ත ජෝසප් විද්‍යාලයේ ගුරු මණ්ඩලය, අධ්‍යයන විශිෂ්ටත්වය සහ පරිපූර්ණ සංවර්ධනය සඳහා ආයතනයේ කැපවීම මූර්තිමත් කරයි...",
+    admissionsTitle: "Admissions",
+    admissionsDescription:
+      "Admittance entails a rigorous procedure reflecting our academic standards...",
+    curriculumTitle: "Curriculum",
+    curriculumDescription:
+      "Our curriculum blends tradition and modernity, fostering intellectual development...",
   },
   tamil: {
     //Header
@@ -209,9 +231,20 @@ const lang = {
     historySubtitle: "1920 இல் நிறுவப்பட்டது",
     historyText:
       "பதகம மற்றும் அதன் சுற்றியுள்ள பகுதிகளின் குழந்தைகளுக்கு தரமான கல்வியை வழங்கும் நோக்கத்துடன், இப்பகுதியில் கல்வியின் மூலக்கல்லான ஆர்/பதகம மகா வித்யாலயா நிறுவப்பட்டது. அணுகக்கூடிய மற்றும் உள்ளடக்கிய கல்வியின் அவசியத்தை உணர்ந்த தொலைநோக்கு கல்வியாளர்கள் மற்றும் சமூகத் தலைவர்களின் வழிகாட்டுதலின் கீழ், இந்தப் பள்ளி 1920 இல் நிறுவப்பட்டது.",
-      historyQuote:
+    historyQuote:
       '"தாழ்மையான தொடக்கத்திலிருந்து கல்விச் சிறப்பிற்கு - ஒரு நூற்றாண்டுக்கும் மேலாக எதிர்காலத்தை வடிவமைத்தல்"',
-      leadershipTitle: "ஆண்டுகள் முழுவதும் தலைமைத்துவம்",
+    leadershipTitle: "ஆண்டுகள் முழுவதும் தலைமைத்துவம்",
+
+    //Academic
+    facultyTitle: "எங்கள் ஆசிரியர்",
+    facultyDescription:
+     "கொழும்பு 10, புனித ஜோசப் கல்லூரியின் கற்பித்தல் ஊழியர்கள், கல்விச் சிறப்பு மற்றும் முழுமையான வளர்ச்சிக்கான நிறுவனத்தின் உறுதிப்பாட்டை எடுத்துக்காட்டுகின்றனர்...",
+    admissionsTitle: "Admissions",
+    admissionsDescription:
+      "Admittance entails a rigorous procedure reflecting our academic standards...",
+    curriculumTitle: "Curriculum",
+    curriculumDescription:
+      "Our curriculum blends tradition and modernity, fostering intellectual development...",
   },
 };
 

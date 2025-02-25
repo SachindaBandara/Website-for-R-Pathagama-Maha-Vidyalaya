@@ -3,44 +3,48 @@ import { motion } from 'framer-motion';
 import facultyImg from '../assets/ImageCarousel/Bg-1.jpg';
 import admissionsImg from '../assets/ImageCarousel/Bg-2.jpg';
 import curriculumImg from '../assets/ImageCarousel/Bg-3.jpg';
+import { useSelector } from 'react-redux';
+import lang from '../utils/languageConstants';
 
-const sections = [
+const sections = (langKey) => [
   {
     id: 'faculty',
-    title: 'Our Faculty',
-    description: "The teaching staff at St. Joseph’s College, Colombo 10, epitomize the institution’s commitment to academic excellence and holistic development...",
+    title: lang[langKey]?.facultyTitle || lang.en.facultyTitle,
+    description: lang[langKey]?.facultyDescription || lang.en.facultyDescription,
     image: facultyImg,
   },
   {
     id: 'admissions',
-    title: 'Admissions',
-    description: "Admittance entails a rigorous procedure reflecting our academic standards...",
+    title: lang[langKey]?.admissionsTitle || lang.en.admissionsTitle,
+    description: lang[langKey]?.admissionsDescription || lang.en.admissionsDescription,
     image: admissionsImg,
   },
   {
     id: 'curriculum',
-    title: 'Curriculum',
-    description: "Our curriculum blends tradition and modernity, fostering intellectual development...",
+    title: lang[langKey]?.curriculumTitle || lang.en.curriculumTitle,
+    description: lang[langKey]?.curriculumDescription || lang.en.curriculumDescription,
     image: curriculumImg,
   },
 ];
 
 const Academic = () => {
+  const langKey = useSelector((store) => store.config.lang);
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   return (
     <div className="font-inter">
-      {sections.map((section, index) => (
+      {sections(langKey).map((section, index) => (
         <section
           key={section.id}
           className="relative min-h-screen flex flex-col justify-center text-white"
           style={{
             backgroundImage: `url(${section.image})`,
-            backgroundAttachment: "fixed",
-            backgroundSize: "cover",
-            backgroundPosition: "center"
+            backgroundAttachment: 'fixed',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
           }}
         >
           {/* Gradient overlay for better text readability */}
@@ -67,7 +71,6 @@ const Academic = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
             ></motion.div>
           </motion.div>
-
 
           {/* Second Part: Description Section */}
           <motion.div
