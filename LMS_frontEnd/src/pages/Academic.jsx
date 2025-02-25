@@ -1,109 +1,87 @@
-import React from "react";
-import { motion } from "framer-motion";
-import { Link } from "react-scroll";
-import { FiArrowUp } from "react-icons/fi";
-import academicData from "../data/academicData";
+import { useEffect } from 'react';
+import { motion } from 'framer-motion';
+import facultyImg from '../assets/ImageCarousel/Bg-1.jpg';
+import admissionsImg from '../assets/ImageCarousel/Bg-2.jpg';
+import curriculumImg from '../assets/ImageCarousel/Bg-3.jpg';
 
-const cardVariants = {
-  hidden: { opacity: 0, y: 50 },
-  visible: { opacity: 1, y: 0 },
-};
+const sections = [
+  {
+    id: 'faculty',
+    title: 'Our Faculty',
+    description: "The teaching staff at St. Joseph’s College, Colombo 10, epitomize the institution’s commitment to academic excellence and holistic development...",
+    image: facultyImg,
+  },
+  {
+    id: 'admissions',
+    title: 'Admissions',
+    description: "Admittance entails a rigorous procedure reflecting our academic standards...",
+    image: admissionsImg,
+  },
+  {
+    id: 'curriculum',
+    title: 'Curriculum',
+    description: "Our curriculum blends tradition and modernity, fostering intellectual development...",
+    image: curriculumImg,
+  },
+];
 
 const Academic = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
-    <div className="min-h-screen flex flex-col bg-gray-50 font-inter">
-      {/* Grade Navigation */}
-      <nav className="sticky top-10 bg-white z-10 mb-8">
-        <div className="container mx-auto px-4 py-16">
-          <div className="flex flex-wrap justify-center gap-3">
-            {academicData.map((grade) => (
-              <Link
-                key={grade.id}
-                to={`grade-${grade.id}`}
-                smooth={true}
-                duration={500}
-                offset={-100}
-                className="px-5 py-2 rounded-full bg-white text-red-custom border-2 border-gray-100 transition-all cursor-pointer font-medium hover:bg-red-custom hover:text-yellow-custom active:scale-95"
-                activeClass="bg-blue-100 border-blue-500 text-blue-900"
-              >
-                {grade.grade}
-              </Link>
-            ))}
-          </div>
-        </div>
-      </nav>
-
-      {/* Main Content */}
-      <main className="flex-1 container mx-auto px-4 py-12">
-        <div className="grid gap-8 max-w-4xl mx-auto">
-          {academicData.map((data, index) => (
-            <motion.section
-              key={data.id}
-              id={`grade-${data.id}`}
-              className="bg-white rounded-xl shadow-lg overflow-hidden"
-              variants={cardVariants}
-              initial="hidden"
-              animate="visible"
-              transition={{ duration: 0.4, delay: index * 0.1 }}
-            >
-              {/* Grade Header */}
-              <div className="bg-red-custom p-6">
-                <h2 className="text-2xl font-bold text-white text-center">
-                  {data.grade} Division
-                </h2>
-              </div>
-
-              {/* Content Section */}
-              <div className="p-8">
-                <div className="mb-6">
-                  <h3 className="text-lg font-semibold text-red-custom mb-2">
-                    Sectional Head:
-                  </h3>
-                  <p className="text-gray-700 text-lg">{data.sectionalHead}</p>
-                </div>
-
-                <div className="border-t pt-6">
-                  <h3 className="text-lg font-semibold text-red-custom mb-4">
-                    Teaching Staff:
-                  </h3>
-                  <ul className="grid gap-4 md:grid-cols-2">
-                    {data.teachers.map((teacher, index) => (
-                      <li
-                        key={index}
-                        className="flex items-start pl-3 border-l-4 border-yellow-custom"
-                      >
-                        <div className="flex-1">
-                          <p className="font-medium text-gray-900">
-                            {teacher.section}
-                          </p>
-                          <p className="text-gray-600">{teacher.teacher}</p>
-                        </div>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </motion.section>
-          ))}
-        </div>
-
-        {/* Back to Top Button */}
-        <motion.div
-          className="fixed bottom-8 right-8"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5 }}
+    <div className="font-inter">
+      {sections.map((section, index) => (
+        <section
+          key={section.id}
+          className="relative min-h-screen flex flex-col justify-center text-white"
+          style={{
+            backgroundImage: `url(${section.image})`,
+            backgroundAttachment: "fixed",
+            backgroundSize: "cover",
+            backgroundPosition: "center"
+          }}
         >
-          <Link
-            to="grade-1"
-            smooth={true}
-            duration={800}
-            className="bg-white text-red-custom p-3 border rounded-full shadow-lg hover:bg-yellow-custom transition-colors cursor-pointer flex items-center justify-center"
+          {/* Gradient overlay for better text readability */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-black/20"></div>
+
+          {/* First Part: Title Section */}
+          <motion.div
+            className="relative container mx-auto text-center px-4"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1 }}
           >
-            <FiArrowUp className="w-5 h-5" />
-          </Link>
-        </motion.div>
-      </main>
+            <div className="inline-flex items-center justify-center space-x-4 mb-6">
+              <h2 className="text-4xl font-bold text-white drop-shadow-lg">
+                {section.title}
+              </h2>
+            </div>
+
+            {/* Divider Line */}
+            <motion.div
+              className="w-16 h-1 bg-yellow-500 mb-8 mx-auto"
+              initial={{ scaleX: 0.2 }} // Start from a small but visible width
+              whileInView={{ scaleX: 1 }} // Scale to full width
+              transition={{ duration: 0.8, delay: 0.2 }}
+            ></motion.div>
+          </motion.div>
+
+
+          {/* Second Part: Description Section */}
+          <motion.div
+            className="relative container mx-auto text-center px-4"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.5 }}
+          >
+            <p className="max-w-3xl mx-auto mb-8 text-lg leading-relaxed text-white/90 drop-shadow-lg">
+              {section.description}
+            </p>
+          </motion.div>
+        </section>
+      ))}
     </div>
   );
 };
