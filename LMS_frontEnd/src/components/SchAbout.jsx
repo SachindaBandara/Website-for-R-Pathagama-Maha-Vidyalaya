@@ -1,49 +1,23 @@
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { MdSchool, MdGroups, MdLibraryBooks, MdHistory } from 'react-icons/md';
+import { useSelector } from "react-redux";
+import lang from "../utils/languageConstants";
 import image from "../assets/hImg2.png";
 
 const SchAbout = () => {
+  const langKey = useSelector((store) => store.config.lang);
+  const { about, tagline, mission, features } = lang[langKey] || lang["en"];
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
-  const features = [
-    {
-      icon: <MdSchool />,
-      title: "130+ Years",
-      description: "Of academic excellence and tradition",
-      image: image
-    },
-    {
-      icon: <MdGroups />,
-      title: "600+ Students",
-      description: "Nurturing young minds every year",
-      image: image
-    },
-    {
-      icon: <MdLibraryBooks />,
-      title: "30+ Faculty",
-      description: "Dedicated and experienced staff",
-      image: image
-    },
-    {
-      icon: <MdHistory />,
-      title: "Modern Curriculum",
-      description: "Balancing tradition and innovation",
-      image: image
-    }
-  ];
 
   return (
     <div className="relative overflow-hidden bg-gray-50 py-20">
       {/* Background Image with Gradient Overlay */}
       <div className="absolute inset-0 z-0">
-        <img
-          src={image}
-          alt="School Campus"
-          className="w-full h-full object-cover object-center"
-        />
+        <img src={image} alt="School Campus" className="w-full h-full object-cover object-center" />
         <div className="absolute inset-0 bg-gradient-to-r from-gray-900/80 to-red-900/60"></div>
       </div>
 
@@ -62,25 +36,24 @@ const SchAbout = () => {
             transition={{ duration: 0.8 }}
             className="text-4xl md:text-5xl font-bold text-white mb-4"
           >
-            About 
+            {about}
           </motion.h2>
 
           {/* Divider Line */}
-        <motion.div
-          className="w-16 h-1 bg-yellow-500 mb-8 mx-auto item-center"
-          initial={{ scaleX: 0 }}
-          whileInView={{ scaleX: 1 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-        ></motion.div>
+          <motion.div
+            className="w-16 h-1 bg-yellow-500 mb-8 mx-auto"
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          ></motion.div>
 
-        
           <motion.p
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
             className="text-lg text-white/80 max-w-2xl mx-auto"
           >
-            Established in 1891, we have been shaping futures with a perfect blend of tradition and innovation.
+            {tagline}
           </motion.p>
         </div>
 
@@ -96,17 +69,15 @@ const SchAbout = () => {
             >
               {/* Background Image */}
               <div className="absolute inset-0">
-                <img
-                  src={feature.image}
-                  alt="Background"
-                  className="w-full h-full object-cover"
-                />
+                <img src={image} alt="Background" className="w-full h-full object-cover" />
                 <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors"></div>
               </div>
 
               {/* Content */}
               <div className="relative z-10 p-8 h-full flex flex-col justify-end text-white">
-                <div className="text-4xl mb-4">{feature.icon}</div>
+                <div className="text-4xl mb-4">
+                  {index === 0 ? <MdSchool /> : index === 1 ? <MdGroups /> : index === 2 ? <MdLibraryBooks /> : <MdHistory />}
+                </div>
                 <h3 className="text-2xl font-bold mb-2">{feature.title}</h3>
                 <p className="text-lg">{feature.description}</p>
               </div>
@@ -114,18 +85,15 @@ const SchAbout = () => {
           ))}
         </div>
 
-        {/* Additional Content */}
+        {/* Mission Statement */}
         <motion.div
           className="mt-20 text-center"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-        
           <p className="text-lg text-white/80 max-w-2xl mx-auto">
-            To provide a nurturing environment that fosters academic excellence, 
-            personal growth, and social responsibility, preparing students to 
-            thrive in a rapidly changing world.
+            {mission}
           </p>
         </motion.div>
       </motion.div>
