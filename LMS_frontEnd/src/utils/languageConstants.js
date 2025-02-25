@@ -52,6 +52,21 @@ const lang = {
 
     // Footer
     copyright: "© 2024 R/Pathagama Maha Vidyalaya, All Rights Reserved.",
+
+    //About
+    missionTitle: "Mission",
+    missionText:
+      "Ensuring a culturally diverse environment for students from all over the country, to enable them to become active learners and well-rounded citizens who contribute positively to the world.",
+    visionTitle: "Vision",
+    visionText:
+      "Providing each and every student with a unique learning environment to grow and excel from the time they begin their educational journey while offering a vibrant and enjoyable educational opportunity to face lifelong challenges.",
+    historyTitle: "History",
+    historySubtitle: "Established 1920",
+    historyText:
+      "R/Pathagama Maha Vidyalaya, a cornerstone of education in the region, was established with the mission of providing quality education to the children of Pathagama and its surrounding areas. The school was founded in 1920, under the guidance of visionary educators and community leaders who recognized the need for accessible and inclusive education.",
+    historyQuote:
+      '"From humble beginnings to academic excellence - shaping futures for over a century"',
+    leadershipTitle: "Leadership Through the Years",
   },
   sinhala: {
     //Header
@@ -109,6 +124,21 @@ const lang = {
 
     //Footer
     copyright: "© 2024 ර/පාතගම මහා විද්‍යාලය, සියලුම හිමිකම් ඇවිරිණි.",
+
+    //About
+    missionTitle: "මූලධර්මය",
+    missionText:
+      "රටේ සෑම කොටසකින්ම ශිෂ්‍යයන් සඳහා සංස්කෘතික විවිධත්වය පවතින පරිසරයක් සැලසීමෙන්, ඔවුන්ව ක්‍රියාකාරී ඉගෙනුම්කරුවන් සහ යහපත් පුරවැසියන් බවට පත්කරනු ඇත.",
+    visionTitle: "දැක්ම",
+    visionText:
+      "සෑම ශිෂ්‍යයකුටම ඔවුන්ගේ අධ්‍යාපන ගමන ආරම්භ කරන අවස්ථාවෙන්ම වර්ධනය වන සහ උත්සාහය දක්වන සුවිශේෂී ඉගෙනුම් පරිසරයක් සැලසීම.",
+    historyTitle: "ඉතිහාසය",
+    historySubtitle: "1920දී ආරම්භ කරන ලදී",
+    historyText:
+      "ර/පාතගම මහා විද්‍යාලය, පාසල ආරම්භ කරන ලද්දේ පාතගම සහ එහි අවට ප්‍රදේශවල ළමයින්ට ගුණාත්මක අධ්‍යාපනය ලබාදීමේ මෙහෙවරක් ලෙසයි. 1920දී ආරම්භ වූ පාසලේ පුරෝගාමී ගුරුවරුන් සහ ප්‍රජා නායකයින් අධ්‍යාපනය ප්‍රවේශමය සහ සමානාත්මතාවය සලකා ආරම්භ කරන ලදී.",
+    historyQuote:
+      '"කුඩා ආරම්භයකින් විශිෂ්ටත්වයට - සියවසක් පුරා අනාගතයන් සැලසුම් කරයි"',
+    leadershipTitle: "වසර තුළ නායකත්වය",
   },
   tamil: {
     //Header
@@ -167,6 +197,21 @@ const lang = {
     //Footer
     copyright:
       "© 2024 ர/பதாகம மகா வித்தியாலயம், அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டுள்ளன.",
+
+    //About
+    missionTitle: "பணி",
+    missionText:
+      "நாடு முழுவதிலுமிருந்து வரும் மாணவர்களுக்கு கலாச்சார ரீதியாக பன்முகத்தன்மை கொண்ட சூழலை உறுதி செய்தல், அவர்கள் சுறுசுறுப்பான கற்பவர்களாகவும், உலகிற்கு நேர்மறையான பங்களிப்பை வழங்கும் நன்கு வளர்ந்த குடிமக்களாகவும் மாறுவதற்கு.",
+    visionTitle: "பார்வை",
+    visionText:
+      "ஒவ்வொரு மாணவரும் தங்கள் கல்விப் பயணத்தைத் தொடங்கும் நேரத்திலிருந்தே வளரவும் சிறந்து விளங்கவும் ஒரு தனித்துவமான கற்றல் சூழலை வழங்குதல், அதே நேரத்தில் வாழ்நாள் முழுவதும் சவால்களை எதிர்கொள்ள ஒரு துடிப்பான மற்றும் மகிழ்ச்சிகரமான கல்வி வாய்ப்பை வழங்குதல்.",
+    historyTitle: "வரலாறு",
+    historySubtitle: "1920 இல் நிறுவப்பட்டது",
+    historyText:
+      "பதகம மற்றும் அதன் சுற்றியுள்ள பகுதிகளின் குழந்தைகளுக்கு தரமான கல்வியை வழங்கும் நோக்கத்துடன், இப்பகுதியில் கல்வியின் மூலக்கல்லான ஆர்/பதகம மகா வித்யாலயா நிறுவப்பட்டது. அணுகக்கூடிய மற்றும் உள்ளடக்கிய கல்வியின் அவசியத்தை உணர்ந்த தொலைநோக்கு கல்வியாளர்கள் மற்றும் சமூகத் தலைவர்களின் வழிகாட்டுதலின் கீழ், இந்தப் பள்ளி 1920 இல் நிறுவப்பட்டது.",
+      historyQuote:
+      '"தாழ்மையான தொடக்கத்திலிருந்து கல்விச் சிறப்பிற்கு - ஒரு நூற்றாண்டுக்கும் மேலாக எதிர்காலத்தை வடிவமைத்தல்"',
+      leadershipTitle: "ஆண்டுகள் முழுவதும் தலைமைத்துவம்",
   },
 };
 

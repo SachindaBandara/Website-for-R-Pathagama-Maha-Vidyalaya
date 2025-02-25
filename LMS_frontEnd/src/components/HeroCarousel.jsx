@@ -24,7 +24,7 @@ const HeroImageCarousel = () => {
     arrows: false,
   };
   
-  //const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const langKey = useSelector((store) => store.config.lang);
   // Destructure language constants with a fallback to English
   const { header, tagline, scrollDown } = lang[langKey] || lang["en"];
