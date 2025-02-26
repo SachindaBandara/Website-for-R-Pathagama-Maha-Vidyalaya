@@ -78,6 +78,12 @@ const lang = {
     curriculumTitle: "Curriculum",
     curriculumDescription:
       "Our curriculum blends tradition and modernity, fostering intellectual development...",
+
+
+    //Gallery
+    gallery: "Gallery",
+    viewText: "View Event",
+
   },
   sinhala: {
     //Header
@@ -161,6 +167,11 @@ const lang = {
     curriculumTitle: "Curriculum",
     curriculumDescription:
       "Our curriculum blends tradition and modernity, fostering intellectual development...",
+
+    //Gallery
+    gallery: "ගැලරිය",
+    viewText: "සිදුවීම බලන්න",
+
   },
   tamil: {
     //Header
@@ -245,6 +256,11 @@ const lang = {
     curriculumTitle: "Curriculum",
     curriculumDescription:
       "Our curriculum blends tradition and modernity, fostering intellectual development...",
+
+    //Gallery
+    gallery: "கேலரி",
+    viewText: "நிகழ்வு பார்க்க",
+    
   },
 };
 
