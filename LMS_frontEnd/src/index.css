@@ -1,6 +1,6 @@
 @import "/node_modules/slick-carousel/slick/slick.css";
 @import "/node_modules/slick-carousel/slick/slick-theme.css";
-
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Sinhala&family=Noto+Sans+Tamil&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -24,3 +24,6 @@
     scrollbar-width: none;
   }
   
+  body {
+    font-family: 'Inter', 'Noto Sans Sinhala', 'Noto Sans Tamil', sans-serif;
+  }
