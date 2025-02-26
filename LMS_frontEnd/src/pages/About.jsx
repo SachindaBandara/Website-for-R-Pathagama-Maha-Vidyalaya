@@ -1,8 +1,8 @@
 import React, { useEffect, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import history from "../assets/History.jpg";
-import missionVisionBg from "../assets/Event3.jpg"; // Add a new image for the first section
-import leadershipBg from "../assets/Event1.jpg"; // Add a new image for the third section
+import missionVisionBg from "../assets/Event3.jpg"; // First section background
+import leadershipBg from "../assets/Event1.jpg"; // Third section background
 import Logo from "../assets/SchoolLogos/School_logo.png";
 import PrincipalCards from "../components/PrincipalCard";
 import { useSelector } from "react-redux";
@@ -42,21 +42,26 @@ const About = () => {
           }}
         ></motion.div>
 
-        {/* Gradient Overlay with Opacity */}
+        {/* Gradient Overlay */}
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-black/50"></div>
 
-        {/* Content */}
-        <div className="relative container mx-auto flex flex-col items-center text-center px-6 sm:px-10">
+        {/* Content Container */}
+        <div className="relative container mx-auto flex flex-col items-center text-center px-4 sm:px-6 md:px-10">
           {/* School Logo and Title */}
           <motion.div
-            className="flex flex-col items-center mb-16"
+            className="flex flex-col items-center mb-12"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <img src={Logo} alt="School Logo" className="w-48 h-48 object-contain mb-4" />
+            {/* Hide the logo on mobile screens with "hidden sm:block" */}
+            <img
+              src={Logo}
+              alt="School Logo"
+              className="hidden sm:block w-32 h-32 sm:w-48 sm:h-48 object-contain mb-4"
+            />
             <motion.h1
-              className="text-5xl font-bold mt-8 text-white"
+              className="text-3xl sm:text-5xl font-bold mt-4 text-white"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
@@ -65,9 +70,9 @@ const About = () => {
             </motion.h1>
           </motion.div>
 
-          {/* Mission and Vision Section */}
+          {/* Mission and Vision */}
           <motion.div
-            className="grid md:grid-cols-2 gap-12 w-full"
+            className="grid gap-8 w-full md:grid-cols-2"
             initial="hidden"
             whileInView="visible"
             variants={{
@@ -77,32 +82,32 @@ const About = () => {
           >
             {/* Mission */}
             <motion.div
-              className="p-8 bg-white/10 backdrop-blur-lg rounded-xl"
+              className="p-4 sm:p-8 bg-white/10 backdrop-blur-lg rounded-xl"
               variants={{
                 hidden: { x: -50, opacity: 0 },
                 visible: { x: 0, opacity: 1 },
               }}
             >
-              <h2 className="text-4xl font-bold text-yellow-400 mb-4 text-center">
+              <h2 className="text-2xl sm:text-4xl font-bold text-yellow-400 mb-4 text-center">
                 {translations.missionTitle}
               </h2>
-              <p className="text-gray-200 text-lg leading-relaxed text-left">
+              <p className="text-gray-200 text-base sm:text-lg leading-relaxed text-left">
                 {translations.missionText}
               </p>
             </motion.div>
 
             {/* Vision */}
             <motion.div
-              className="p-8 bg-white/10 backdrop-blur-lg rounded-xl"
+              className="p-4 sm:p-8 bg-white/10 backdrop-blur-lg rounded-xl"
               variants={{
                 hidden: { x: 50, opacity: 0 },
                 visible: { x: 0, opacity: 1 },
               }}
             >
-              <h2 className="text-4xl font-bold text-yellow-400 mb-4 text-center">
+              <h2 className="text-2xl sm:text-4xl font-bold text-yellow-400 mb-4 text-center">
                 {translations.visionTitle}
               </h2>
-              <p className="text-gray-200 text-lg leading-relaxed text-left">
+              <p className="text-gray-200 text-base sm:text-lg leading-relaxed text-left">
                 {translations.visionText}
               </p>
             </motion.div>
@@ -123,14 +128,14 @@ const About = () => {
           }}
         ></motion.div>
 
-        {/* Gradient Overlay with Opacity */}
+        {/* Gradient Overlay */}
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-black/50"></div>
 
         {/* Content */}
-        <div className="relative container mx-auto flex flex-col items-center text-center px-6 sm:px-10">
+        <div className="relative container mx-auto flex flex-col items-center text-center px-4 sm:px-6 md:px-10">
           {/* History Title */}
           <motion.h2
-            className="text-5xl font-bold text-yellow-400 mb-12"
+            className="text-3xl sm:text-5xl font-bold text-yellow-400 mb-8"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -140,16 +145,16 @@ const About = () => {
 
           {/* History Description */}
           <motion.div
-            className="w-full max-w-4xl bg-white/10 backdrop-blur-lg rounded-xl p-8"
+            className="w-full max-w-3xl sm:max-w-4xl bg-white/10 backdrop-blur-lg rounded-xl p-4 sm:p-8"
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <p className="text-gray-200 text-lg leading-relaxed text-left">
+            <p className="text-gray-200 text-base sm:text-lg leading-relaxed text-left">
               {translations.historyText}
             </p>
-            <div className="mt-8 p-4 bg-yellow-400/10 rounded-lg border-l-4 border-yellow-400">
-              <p className="text-gray-200 italic text-right">
+            <div className="mt-4 sm:mt-8 p-4 bg-yellow-400/10 rounded-lg border-l-4 border-yellow-400">
+              <p className="text-gray-200 italic text-right text-sm sm:text-base">
                 {translations.historyQuote}
               </p>
             </div>
@@ -170,13 +175,13 @@ const About = () => {
           }}
         ></motion.div>
 
-        {/* Gradient Overlay with Opacity */}
+        {/* Gradient Overlay */}
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-black/50"></div>
 
         {/* Content */}
-        <div className="relative container mx-auto flex flex-col items-center text-center px-6 sm:px-10">
+        <div className="relative container mx-auto flex flex-col items-center text-center px-4 sm:px-6 md:px-10">
           <motion.h2
-            className="text-4xl font-bold text-center mb-16 text-yellow-400"
+            className="text-2xl sm:text-4xl font-bold text-center mb-8 text-yellow-400"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}

@@ -131,7 +131,7 @@ const Header = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/academics" className="hover:text-yellow-custom" onClick={toggleMenu}>
+                <Link to="/academic" className="hover:text-yellow-custom" onClick={toggleMenu}>
                   {academics}
                 </Link>
               </li>
@@ -150,6 +150,11 @@ const Header = () => {
                   {gallery}
                 </Link>
               </li>
+              <li>
+                <Link to="/contact" className="hover:text-yellow-custom" onClick={toggleMenu}>
+                  {contact}
+                </Link>
+              </li>
               {/* Language Selector in Mobile Menu */}
               <li>
                 <select
@@ -163,11 +168,6 @@ const Header = () => {
                 </select>
               </li>
             </ul>
-            <div className="absolute bottom-8">
-              <Link to="/contact" className="hover:text-yellow-custom text-lg" onClick={toggleMenu}>
-                {contact}
-              </Link>
-            </div>
           </div>
         </div>
       </main>

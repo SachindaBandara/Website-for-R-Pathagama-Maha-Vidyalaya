@@ -36,7 +36,7 @@ const NoticeCard = ({
       </div>
 
       <div className="p-6">
-        <h2 className="text-xl font-bold text-red-800 mb-4">
+        <h2 className="text-xl font-bold text-red-800 mb-4 mt-10 sm:mt-0">
           {notice.translatedTitle || notice.title}
         </h2>
 
@@ -54,9 +54,9 @@ const NoticeCard = ({
           </div>
           <button
             onClick={() => handleViewNotice(notice.pdfLink)}
-            className="flex items-center space-x-2 bg-red-800 text-white px-4 py-2 rounded-md hover:bg-red-600 transition-colors duration-200"
+            className="flex items-center justify-center sm:justify-start space-x-2 bg-red-800 text-white px-4 sm:px-4 py-2 rounded-md hover:bg-red-600 transition-colors duration-200"
           >
-            <span className='text-sm'>
+            <span className="text-sm">
               {translations.viewNotice || staticContent.viewNotice}
             </span>
             <ArrowRight size={16} />
