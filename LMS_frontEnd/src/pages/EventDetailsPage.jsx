@@ -7,9 +7,12 @@ const EventDetailsPage = () => {
   const { eventId } = useParams();
   const [event, setEvent] = useState(null);
 
+    // Get the API URL from environment variables
+    const API_URL = import.meta.env.VITE_API_URL; 
+
   const fetchEventDetails = async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/api/events/${eventId}`);
+      const res = await axios.get(`${API_URL}events/${eventId}`);
       setEvent(res.data);
     } catch (err) {
       console.error(err);
